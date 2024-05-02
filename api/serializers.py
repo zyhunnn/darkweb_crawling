@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 
 class URLSerializer(serializers.ModelSerializer):
     class Meta:
-        model = URL_Crawler
-        fields = ['id', 'URL', 'domain', 'parameters', 'title', 'createdAt', 'updatedAt']
+        model = URL
+        fields = ['id', 'url', 'domain', 'parameters', 'title', 'createdAt', 'updatedAt']
 
 class wordSerializer(serializers.ModelSerializer):
     class Meta:
