@@ -19,6 +19,8 @@ $ python manage.py runserver
 
 |REST 명령어|주소|설명|필요입력값|
 |----------|---|---|------------|
-|GET|api/urllist/|URL DB 출력|없음|
-|GET|api/wordlist/|word DB 출력|없음|
-|GET|api/wordlist/<int:url_id>/|특정 url의 word DB 출력|없음|
+|GET|api/url/|URL DB 출력|없음|
+|GET|api/word/|word DB 출력|없음|
+|GET|api/word/<int:url_id>/|특정 url의 word DB 출력|없음|
+|POST|api/url/|URL 저장|url: 주소, domain: 도메인, parameters: 파라미터,title: 타이틀|
+|POST|api/word/|word 저장|url: url id 값, word: 단어, count: 단어 개수|
