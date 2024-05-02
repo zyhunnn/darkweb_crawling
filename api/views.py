@@ -4,6 +4,7 @@ from rest_framework import generics
 from rest_framework.response import Response
 from .serializers import URLSerializer, wordSerializer
 from rest_framework.permissions import AllowAny
+from urllib.parse import urlparse, parse_qs
 
 
 class url_List(generics.ListCreateAPIView):
@@ -17,8 +18,9 @@ class url_List(generics.ListCreateAPIView):
     
     def create(self, request, *args, **kwargs):
         url = request.data.get('url')
-        domain = request.data.get('domain')
-        parameters = request.data.get('parameters')
+        parsed_url = urlparse(url)
+        domain = parsed_url.netloc
+        parameters = parsed_url.query
         title = request.data.get('title')
 
         existing_url = URL.objects.filter(url=url).first()
@@ -28,7 +30,9 @@ class url_List(generics.ListCreateAPIView):
             serializer = self.get_serializer(existing_url)
             return Response(serializer.data)
 
-        return super().create(request, *args, **kwargs)
+        new_url = URL.objects.create(url=url, domain=domain, parameters=parameters, title=title)
+        serializer = self.get_serializer(new_url)
+        return Response(serializer.data)
 
 class Word_List(generics.ListCreateAPIView):
     queryset = word_count.objects.all()
