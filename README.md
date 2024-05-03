@@ -2,17 +2,19 @@
 
 ## 설치
 ```
-$ git clone https://github.com/zyhunnn/darkweb_crawling
+git clone https://github.com/zyhunnn/darkweb_crawling
 
-$ cd darkweb_crawling
+cd darkweb_crawling
 
-$ pip install -r requirements.txt
+pip install -r requirements.txt
 
-$ python manage.py makemigrations
+python manage.py makemigrations
 
-$ python manage.py migrate
+python manage.py migrate
 
-$ python manage.py runserver
+python manage.py crontab add
+
+python manage.py runserver
 ```
 
 ## API DOCUMENT
