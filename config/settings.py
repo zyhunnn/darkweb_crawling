@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'api',
     'rest_framework',
+    'django_crontab',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAdminUser'
    ),
 }
+
+CRONJOBS = [
+    ('0 0 * * *', 'my_app.views.DailyTask'),
+]

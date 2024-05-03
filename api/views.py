@@ -4,8 +4,23 @@ from rest_framework.response import Response
 from .serializers import URLSerializer, wordSerializer
 from rest_framework.permissions import AllowAny
 from urllib.parse import urlparse
+from django_cron import CronJobBase, Schedule
 
 
+# 하루에 한 번 크롤링 함수 실행
+class DailyTask(CronJobBase):
+    # 24시간
+    RUN_EVERY_MINS = 1440
+
+    schedule = Schedule(run_every_mins=RUN_EVERY_MINS)
+    code = 'my_app.daily_task'
+
+    def do(self):
+        # crawling()
+        pass
+
+
+# url api
 class url_List(generics.ListCreateAPIView):
     queryset = URL.objects.all()
     serializer_class = URLSerializer
@@ -33,6 +48,8 @@ class url_List(generics.ListCreateAPIView):
         serializer = self.get_serializer(new_url)
         return Response(serializer.data)
 
+
+# word api
 class Word_List(generics.ListCreateAPIView):
     queryset = word_count.objects.all()
     serializer_class = wordSerializer
