@@ -152,8 +152,6 @@ class url_List(generics.ListCreateAPIView):
     permission_classes = [AllowAny]
 
     def get_queryset(self):
-        url="http://l57o3sz4piyjtse7ltzu43n33qsishdozndelwu5pertav64oopmckad.onion"
-        crawling(url, url, 0, 1, [])
         queryset=URL.objects.all()
         return queryset
     
