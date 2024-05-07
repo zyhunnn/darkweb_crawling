@@ -59,10 +59,10 @@ def crawling(url, start_url, depth, target_depth, visited):
         return
     
     visited.append(url)
-    
+
     proxies = {
-                "http" : "socks5h://127.0.0.1:9150",
-                "https" : "socks5h://127.0.0.1:9150"
+                "http" : "socks5h://127.0.0.1:9050",
+                "https" : "socks5h://127.0.0.1:9050"
             }
     
     if depth == target_depth:
