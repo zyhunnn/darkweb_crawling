@@ -67,6 +67,6 @@ data = df.values.tolist()
 new_df = pd.DataFrame(data, columns=column_name)
 new_df['Date'] = pd.to_datetime(new_df['DateTime']).dt.strftime('%Y-%m-%d')
 
-# 함수 호출 (예시: "2024-05-01" 날짜에 대한 WordCloud 생성)
-input_date = '2024-02-05'
+# 함수 호출 (예시: "2024-05-09" 날짜에 대한 WordCloud 생성)
+input_date = '2024-05-09'
 generate_wordcloud_by_date(new_df, input_date, f"output_{input_date}.jpg")
