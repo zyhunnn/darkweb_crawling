@@ -1,3 +1,5 @@
+import os
+import datetime
 """
 Django settings for config project.
 
@@ -25,8 +27,9 @@ SECRET_KEY = 'django-insecure-@+t-2#!(!8i95u-l(0oscyerq0i-hqtu=^u%q2pet-%2@xdx$6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+    
+]
 
 # Application definition
 
@@ -112,7 +115,7 @@ TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -135,5 +138,5 @@ REST_FRAMEWORK = {
 }
 
 CRONJOBS = [
-    ('0 0 * * *', 'my_app.views.DailyTask'),
+    ('0 19 * * *', 'api.views.schedule_job', '>> '+ os.path.join(BASE_DIR, f'api/log/cron_{datetime.datetime.now().strftime("%Y-%m-%d")}.log')),
 ]

@@ -6,9 +6,9 @@ from django.contrib.auth.models import User
 class URLSerializer(serializers.ModelSerializer):
     class Meta:
         model = URL
-        fields = ['id', 'url', 'domain', 'parameters', 'title', 'createdAt', 'updatedAt']
+        fields = ['id', 'keyword', 'url', 'domain', 'parameters', 'title', 'prev_url', 'createdAt', 'updatedAt']
 
 class wordSerializer(serializers.ModelSerializer):
     class Meta:
         model = word_count
-        fields = ['id', 'url', 'word', 'count', 'createdAt', 'updatedAt']
+        fields = ['id', 'keyword', 'url', 'word', 'count', 'createdAt', 'updatedAt']
