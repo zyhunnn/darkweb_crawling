@@ -54,6 +54,7 @@ class preprocess_data:
         return words_to_db
 
 
+      
 
         
 # # 하루에 한 번 크롤링 함수 실행
